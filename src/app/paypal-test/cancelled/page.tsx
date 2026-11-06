@@ -1,0 +1,2 @@
+import Link from 'next/link';
+export default function Cancelled() { return <main className="checkout-shell"><section className="checkout-card"><span className="badge amber">Checkout cancelled</span><h1>You left checkout.</h1><p className="subtitle">No payment is confirmed by this page. If you are unsure whether an earlier attempt completed, ask the project operator to check PayPal before trying again.</p><Link className="button primary" href="/">Back to SellerSide Pro</Link></section></main>; }
