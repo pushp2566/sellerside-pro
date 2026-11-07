@@ -31,6 +31,9 @@ yarn-error.log*
 !.env.example
 /.local/
 
+# Locally installed agent guidance; not app runtime source.
+/.agents/
+
 # vercel
 .vercel
 
