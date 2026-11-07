@@ -8,6 +8,7 @@ An order and refund assistant for sellers who receive customer requests in chat.
 - The preview uses fictional sample records. No AI requests, database persistence, checkout, or refunds are connected to these sample records.
 - The separate sandbox integration probe has successfully created and captured a USD 60 test payment and completed a USD 15 partial refund. This is a manual integration result, not an automated test assertion.
 - PayPal approval/cancellation return pages now explain the next step without assuming payment succeeded.
+- A Neon PostgreSQL project has been created, and an encrypted database connection plus a transactional write/read probe have passed. The UI still uses samples; saved-order routes are the next implementation step.
 
 ## Run locally
 
@@ -57,7 +58,21 @@ flowchart LR
   Updates --> DB
 ```
 
-Next: provider-independent AI module, PostgreSQL records and approval controls, then integrate the tested payment actions into real saved orders. Hosting remains undecided pending free-plan eligibility and quota checks.
+Next: PostgreSQL order records and approval controls, the provider-independent AI module, then integrate the tested payment actions into real saved orders. Hosting remains undecided pending free-plan eligibility and quota checks.
+
+## Database connection setup
+
+See [the Neon setup record](docs/neon-setup.md) for the non-secret project identifiers and verification result.
+
+Privately set `DATABASE_URL` in `.env.local` to your pooled connection string, then run:
+
+```sh
+npm run db:check
+```
+
+The probe verifies TLS, checks the database name, writes and reads a temporary record with parameterized SQL, then rolls back. It creates no permanent test data. Real connection strings and passwords must not be committed.
+
+The project-level `.codex/config.toml` pins Neon MCP to this project and contains no API key. It requires OAuth sign-in on first use. Local `neon` and `neon-postgres` guidance is installed separately and excluded from application source. Account-wide CLI authentication has not been completed.
 
 ## License
 
