@@ -8,23 +8,28 @@
     "start": "next start --hostname 127.0.0.1",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
-    "paypal:test": "node scripts/paypal-smoke.mjs"
+    "paypal:test": "node scripts/paypal-smoke.mjs",
+    "db:check": "node scripts/database-smoke.mjs"
   },
-  "engines": { "node": ">=22 <25" },
+  "engines": {
+    "node": ">=22 <25"
+  },
   "dependencies": {
+    "ag-grid-community": "36.3.0",
+    "ag-grid-react": "36.3.0",
+    "lucide-react": "1.70.0",
     "next": "16.4.5",
+    "pg": "8.23.1",
     "react": "19.3.1",
     "react-dom": "19.3.1",
-    "ag-grid-react": "36.3.0",
-    "ag-grid-community": "36.3.0",
-    "zod": "4.6.7",
-    "lucide-react": "1.70.0"
+    "zod": "4.6.7"
   },
   "devDependencies": {
-    "typescript": "~5.9.3",
     "@types/node": "^22.0.0",
+    "@types/pg": "8.23.1",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
+    "typescript": "~5.9.3",
     "vitest": "5.1.0"
   }
 }
